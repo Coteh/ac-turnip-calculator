@@ -5,16 +5,19 @@ A simple React application I made to quickly calculate turnip buy price and how 
 **This project is still under construction.**
 
 ## Features
+
 - Allows for input of the following items:
-    - Turnip price
-    - Number of turnips (4000, a full inventory of 10x turnips, by default)
-    - Tip percentage (Community standard of 10% is set as the default)
+  - Turnip price
+  - Number of turnips (4000, a full inventory of 10x turnips, by default)
+  - Tip percentage (Community standard of 10% is set as the default)
 - Calculates the following:
-    - Amount of bells the Nooklings will pay you for your turnips given the price and quantity
-    - Amount of bells to tip the player, given buy price and tip percentage
+  - Amount of bells the Nooklings will pay you for your turnips given the price and quantity
+  - Amount of bells to tip the player, given buy price and tip percentage
 
 ## Setup
+
 You can run the following to start the server in development mode: (standard CRA setup atm)
+
 ```
 yarn start
 ```
