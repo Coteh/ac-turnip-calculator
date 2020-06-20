@@ -3244,6 +3244,67 @@ cosmiconfig@^6.0.0:
     path-type "^4.0.0"
     yaml "^1.7.2"
 
+coteh-react-scripts@3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/coteh-react-scripts/-/coteh-react-scripts-3.4.1.tgz#5868741b1ab4b98d54b5021c24329b0872da44bf"
+  integrity sha512-2qF8tnIdKqSkJJQd3dszLosM2S+ECJgbKcKwJRgwD+XHKs428066SNdWj+cSX85t422qJZCQLcPO252lZGtzxA==
+  dependencies:
+    "@babel/core" "7.9.0"
+    "@svgr/webpack" "4.3.3"
+    "@typescript-eslint/eslint-plugin" "^2.10.0"
+    "@typescript-eslint/parser" "^2.10.0"
+    babel-eslint "10.1.0"
+    babel-jest "^24.9.0"
+    babel-loader "8.1.0"
+    babel-plugin-named-asset-import "^0.3.6"
+    babel-preset-react-app "^9.1.2"
+    camelcase "^5.3.1"
+    case-sensitive-paths-webpack-plugin "2.3.0"
+    css-loader "3.4.2"
+    dotenv "8.2.0"
+    dotenv-expand "5.1.0"
+    eslint "^6.6.0"
+    eslint-config-react-app "^5.2.1"
+    eslint-loader "3.0.3"
+    eslint-plugin-flowtype "4.6.0"
+    eslint-plugin-import "2.20.1"
+    eslint-plugin-jsx-a11y "6.2.3"
+    eslint-plugin-react "7.19.0"
+    eslint-plugin-react-hooks "^1.6.1"
+    file-loader "4.3.0"
+    fs-extra "^8.1.0"
+    html-webpack-plugin "4.0.0-beta.11"
+    identity-obj-proxy "3.0.0"
+    jest "24.9.0"
+    jest-environment-jsdom-fourteen "1.0.1"
+    jest-junit "^10.0.0"
+    jest-resolve "24.9.0"
+    jest-watch-typeahead "0.4.2"
+    mini-css-extract-plugin "0.9.0"
+    optimize-css-assets-webpack-plugin "5.0.3"
+    pnp-webpack-plugin "1.6.4"
+    postcss-flexbugs-fixes "4.1.0"
+    postcss-loader "3.0.0"
+    postcss-normalize "8.0.1"
+    postcss-preset-env "6.7.0"
+    postcss-safe-parser "4.0.1"
+    react-app-polyfill "^1.0.6"
+    react-dev-utils "^10.2.1"
+    resolve "1.15.0"
+    resolve-url-loader "3.1.1"
+    sass-loader "8.0.2"
+    semver "6.3.0"
+    style-loader "0.23.1"
+    terser-webpack-plugin "2.3.5"
+    ts-pnp "1.1.6"
+    url-loader "2.3.0"
+    webpack "4.42.0"
+    webpack-dev-server "3.10.3"
+    webpack-manifest-plugin "2.2.0"
+    workbox-webpack-plugin "4.3.1"
+  optionalDependencies:
+    fsevents "2.1.2"
+
 create-ecdh@^4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.3.tgz#c9111b6f33045c4697f144787f9254cdc77c45ff"
@@ -6060,6 +6121,17 @@ jest-jasmine2@^24.9.0:
     jest-util "^24.9.0"
     pretty-format "^24.9.0"
     throat "^4.0.0"
+
+jest-junit@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/jest-junit/-/jest-junit-10.0.0.tgz#c94b91c24920a327c9d2a075e897b2dba4af494b"
+  integrity sha512-dbOVRyxHprdSpwSAR9/YshLwmnwf+RSl5hf0kCGlhAcEeZY9aRqo4oNmaT0tLC16Zy9D0zekDjWkjHGjXlglaQ==
+  dependencies:
+    jest-validate "^24.9.0"
+    mkdirp "^0.5.1"
+    strip-ansi "^5.2.0"
+    uuid "^3.3.3"
+    xml "^1.0.1"
 
 jest-leak-detector@^24.9.0:
   version "24.9.0"
@@ -8900,66 +8972,6 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-scripts@3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-3.4.1.tgz#f551298b5c71985cc491b9acf3c8e8c0ae3ada0a"
-  integrity sha512-JpTdi/0Sfd31mZA6Ukx+lq5j1JoKItX7qqEK4OiACjVQletM1P38g49d9/D0yTxp9FrSF+xpJFStkGgKEIRjlQ==
-  dependencies:
-    "@babel/core" "7.9.0"
-    "@svgr/webpack" "4.3.3"
-    "@typescript-eslint/eslint-plugin" "^2.10.0"
-    "@typescript-eslint/parser" "^2.10.0"
-    babel-eslint "10.1.0"
-    babel-jest "^24.9.0"
-    babel-loader "8.1.0"
-    babel-plugin-named-asset-import "^0.3.6"
-    babel-preset-react-app "^9.1.2"
-    camelcase "^5.3.1"
-    case-sensitive-paths-webpack-plugin "2.3.0"
-    css-loader "3.4.2"
-    dotenv "8.2.0"
-    dotenv-expand "5.1.0"
-    eslint "^6.6.0"
-    eslint-config-react-app "^5.2.1"
-    eslint-loader "3.0.3"
-    eslint-plugin-flowtype "4.6.0"
-    eslint-plugin-import "2.20.1"
-    eslint-plugin-jsx-a11y "6.2.3"
-    eslint-plugin-react "7.19.0"
-    eslint-plugin-react-hooks "^1.6.1"
-    file-loader "4.3.0"
-    fs-extra "^8.1.0"
-    html-webpack-plugin "4.0.0-beta.11"
-    identity-obj-proxy "3.0.0"
-    jest "24.9.0"
-    jest-environment-jsdom-fourteen "1.0.1"
-    jest-resolve "24.9.0"
-    jest-watch-typeahead "0.4.2"
-    mini-css-extract-plugin "0.9.0"
-    optimize-css-assets-webpack-plugin "5.0.3"
-    pnp-webpack-plugin "1.6.4"
-    postcss-flexbugs-fixes "4.1.0"
-    postcss-loader "3.0.0"
-    postcss-normalize "8.0.1"
-    postcss-preset-env "6.7.0"
-    postcss-safe-parser "4.0.1"
-    react-app-polyfill "^1.0.6"
-    react-dev-utils "^10.2.1"
-    resolve "1.15.0"
-    resolve-url-loader "3.1.1"
-    sass-loader "8.0.2"
-    semver "6.3.0"
-    style-loader "0.23.1"
-    terser-webpack-plugin "2.3.5"
-    ts-pnp "1.1.6"
-    url-loader "2.3.0"
-    webpack "4.42.0"
-    webpack-dev-server "3.10.3"
-    webpack-manifest-plugin "2.2.0"
-    workbox-webpack-plugin "4.3.1"
-  optionalDependencies:
-    fsevents "2.1.2"
-
 react@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
@@ -10649,7 +10661,7 @@ utils-merge@1.0.1:
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
 
-uuid@^3.0.1, uuid@^3.3.2:
+uuid@^3.0.1, uuid@^3.3.2, uuid@^3.3.3:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
@@ -11137,6 +11149,11 @@ xml-name-validator@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
   integrity sha512-A5CUptxDsvxKJEU3yO6DuWBSJz/qizqzJKOMIfUJHETbBw/sFaDxgd6fxm1ewUaM0jZ444Fc5vC5ROYurg/4Pw==
+
+xml@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/xml/-/xml-1.0.1.tgz#78ba72020029c5bc87b8a81a3cfcd74b4a2fc1e5"
+  integrity sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=
 
 xmlchars@^2.1.1:
   version "2.2.0"
