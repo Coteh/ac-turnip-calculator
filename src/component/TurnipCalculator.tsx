@@ -3,12 +3,14 @@ import TipDisplay from './TipDisplay';
 import InputBox from './form/InputBox';
 import Button from './form/Button';
 
-export default function TurnipCalculator() {
+export default function TurnipCalculator(props: any) {
   const [price, setPrice] = useState(347);
   const [turnips, setTurnips] = useState(4000);
   const [buyPrice, setBuyPrice] = useState(0);
   const [tipPercent, setTipPercent] = useState(0.1);
   const [tip, setTip] = useState(0);
+
+  const { onPriceCalculated } = props;
 
   const tipCallback = useCallback(calculateTip, [buyPrice, tipPercent]);
 
@@ -18,6 +20,7 @@ export default function TurnipCalculator() {
 
   function calculateBuyPrice() {
     setBuyPrice(price * turnips);
+    onPriceCalculated(buyPrice, price, turnips);
   }
 
   function calculateTip() {

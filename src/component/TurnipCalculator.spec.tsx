@@ -6,6 +6,12 @@ describe('TurnipCalculator component', () => {
   test('should render without crash', () => {
     render(<TurnipCalculator />);
   });
+  test('should fire onPriceCalculated handler with calculated price', () => {
+    fail('Not implemented');
+  });
+  test('should fire onPriceCalculated handler with turnip price and quantity', () => {
+    fail('Not implemented');
+  });
   test('should display turnip price', () => {
     fail('Not implemented');
   });

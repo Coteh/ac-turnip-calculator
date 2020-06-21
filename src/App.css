@@ -5,14 +5,6 @@
 .App-logo {
   height: 20vmin;
   pointer-events: none;
-  filter: invert(19%) sepia(10%) saturate(4510%) hue-rotate(103deg)
-    brightness(97%) contrast(92%);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -33,13 +25,4 @@
 
 footer {
   padding: 8px;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
