@@ -4,7 +4,7 @@ import InputBox from './form/InputBox';
 import Button from './form/Button';
 
 export default function TurnipCalculator() {
-  const [price, setPrice] = useState(473);
+  const [price, setPrice] = useState(347);
   const [turnips, setTurnips] = useState(4000);
   const [buyPrice, setBuyPrice] = useState(0);
   const [tipPercent, setTipPercent] = useState(0.1);
