@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { css } from 'emotion';
+import BellDisplay from './BellDisplay';
+
+import largeBellImg from './../icon/large_bag.png';
+import mediumBellImg from './../icon/medium_bag.png';
+import smallBellImg from './../icon/small_bag.png';
+import coinImg from './../icon/coin.png';
 
 export default function TipDisplay(props: any) {
   const { tip } = props;
@@ -36,21 +42,22 @@ export default function TipDisplay(props: any) {
       <br />
       <span>Thats...</span>
       <br />
-      <span>
-        <b>{largeBags}</b> large bell bags,
-      </span>
-      <br />
-      <span>
-        <b>{mediumBags}</b> medium bell bags,
-      </span>
-      <br />
-      <span>
-        <b>{smallBags}</b> small bell bags,
-      </span>
-      <br />
-      <span>
-        and <b>{coins}</b> coins
-      </span>
+      <BellDisplay
+        amount={largeBags}
+        imgSrc={largeBellImg}
+        alt={'Large Bell Bag Icon'}
+      />
+      <BellDisplay
+        amount={mediumBags}
+        imgSrc={mediumBellImg}
+        alt={'Medium Bell Bag Icon'}
+      />
+      <BellDisplay
+        amount={smallBags}
+        imgSrc={smallBellImg}
+        alt={'Small Bell Bag Icon'}
+      />
+      <BellDisplay amount={coins} imgSrc={coinImg} alt={'Coin Icon'} />
     </div>
   );
 }
