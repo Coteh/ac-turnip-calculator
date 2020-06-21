@@ -5,6 +5,8 @@
 .App-logo {
   height: 20vmin;
   pointer-events: none;
+  filter: invert(19%) sepia(10%) saturate(4510%) hue-rotate(103deg)
+    brightness(97%) contrast(92%);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,8 +16,9 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #19ad5e;
   min-height: 20vh;
+  padding: 2vh;
   display: flex;
   flex-direction: column;
   align-items: center;

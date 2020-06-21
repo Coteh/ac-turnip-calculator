@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { css } from 'emotion';
 
 export default function TipDisplay(props: any) {
   const { tip } = props;
@@ -19,16 +20,37 @@ export default function TipDisplay(props: any) {
   }, [tip]);
 
   return (
-    <div className={'tip-display'}>
+    <div
+      className={css`
+        padding: 8px;
+        width: 25%;
+        border: 5px solid #9c9988;
+        border-radius: 8px;
+        background-color: #7b6c53;
+        margin: 20px auto;
+      `}
+    >
+      <label>
+        You should tip: <b>{tip}</b> bells
+      </label>
+      <br />
       <span>Thats...</span>
       <br />
-      <span>{largeBags} large bell bags,</span>
+      <span>
+        <b>{largeBags}</b> large bell bags,
+      </span>
       <br />
-      <span>{mediumBags} medium bell bags,</span>
+      <span>
+        <b>{mediumBags}</b> medium bell bags,
+      </span>
       <br />
-      <span>{smallBags} small bell bags,</span>
+      <span>
+        <b>{smallBags}</b> small bell bags,
+      </span>
       <br />
-      <span>and {coins} coins</span>
+      <span>
+        and <b>{coins}</b> coins
+      </span>
     </div>
   );
 }
