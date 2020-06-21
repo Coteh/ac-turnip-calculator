@@ -3,6 +3,7 @@ import Turnip from './icon/turnip.png';
 import RottenTurnip from './icon/turnip_rotten.png';
 import './App.css';
 import TurnipCalculator from './component/TurnipCalculator';
+import GitHubCorner from './component/vendor/GitHubCorner';
 
 function App() {
   const [turnipImgSrc, setTurnipImgSrc] = useState(Turnip);
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <div className="App">
+      <GitHubCorner />
       <header className="App-header">
         <img src={turnipImgSrc} className="App-logo" alt="logo" />
       </header>
