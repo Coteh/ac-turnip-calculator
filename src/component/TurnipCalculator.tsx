@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import TipDisplay from './TipDisplay';
+import InputBox from './form/InputBox';
+import Button from './form/Button';
 
 export default function TurnipCalculator() {
   const [price, setPrice] = useState(473);
@@ -25,42 +27,39 @@ export default function TurnipCalculator() {
   return (
     <div className={'turnip-calc'}>
       <form action="">
-        <label>
-          Turnip Price:
-          <input
-            value={price}
-            onChange={(e) =>
-              setPrice(e.target.value === '' ? 0 : parseInt(e.target.value))
-            }
-          ></input>
-        </label>
-        <label>
-          Number of Turnips:
-          <input
-            value={turnips}
-            onChange={(e) =>
-              setTurnips(e.target.value === '' ? 0 : parseInt(e.target.value))
-            }
-          ></input>
-        </label>
-        <label>
-          Set Tip percentage:
-          <input
-            value={tipPercent}
-            onChange={(e) =>
-              setTipPercent(
-                e.target.value === '' ? 0 : parseInt(e.target.value),
-              )
-            }
-          ></input>
-        </label>
-        <button type={'button'} onClick={calculateBuyPrice}>
-          Submit
-        </button>
+        <InputBox label={'Input Price:'} value={price} onChange={setPrice} />
+        <br />
+        <InputBox
+          label={'Number of Turnips:'}
+          value={turnips}
+          onChange={setTurnips}
+        />
+        <br />
+        <InputBox
+          label={'Set Tip percentage:'}
+          value={tipPercent}
+          onChange={setTipPercent}
+        />
+        <br />
+        <Button onSubmit={calculateBuyPrice} />
+        <br />
+        <br />
       </form>
-      <label>Buy Price will be: {buyPrice}</label>
-      <label>You should tip: {tip} bells</label>
-      <TipDisplay tip={tip} />
+      {(() => {
+        if (buyPrice > 0) {
+          return (
+            <>
+              <label>
+                Buy Price will be: <b>{buyPrice}</b> bells
+              </label>
+              <br />
+              <TipDisplay tip={tip} />
+            </>
+          );
+        } else {
+          return <></>;
+        }
+      })()}
     </div>
   );
 }
