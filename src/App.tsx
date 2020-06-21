@@ -9,6 +9,7 @@ function App() {
       <header className="App-header">
         <img src={Leaf} className="App-logo" alt="logo" />
       </header>
+      <h1>Animal Crossing Turnip Calculator</h1>
       <TurnipCalculator />
       <footer>&copy; 2020 James Cote</footer>
     </div>
