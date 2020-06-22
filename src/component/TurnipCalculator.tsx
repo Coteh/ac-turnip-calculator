@@ -91,10 +91,6 @@ export default function TurnipCalculator(props: any) {
                   ),
                 );
               }}
-              onFocus={(e: React.ChangeEvent<HTMLInputElement>) => {
-                let elem: HTMLInputElement = e.target;
-                elem.selectionStart = elem.selectionEnd = elem.value.length - 1;
-              }}
             />
           }
         />
