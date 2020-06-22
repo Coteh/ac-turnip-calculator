@@ -15,4 +15,10 @@ describe('BellDisplay component', () => {
   test('should display img alt text passed in as prop', () => {
     fail('Not implemented');
   });
+  test('should display tooltip with quantity and bell amount on mouse hover (desktop)', () => {
+    fail('Not implemented');
+  });
+  test('should display tooltip with quantity and bell amount on tap (mobile)', () => {
+    fail('Not implemented');
+  });
 });

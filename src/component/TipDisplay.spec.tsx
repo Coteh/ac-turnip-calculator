@@ -18,4 +18,13 @@ describe('TipDisplay component', () => {
   test('should display number of coins to tip', () => {
     fail('Not implemented');
   });
+  test('should hide a display if its quantity is 0', () => {
+    fail('Not implemented');
+  });
+  test('should provide message to hover for tooltip on desktop', () => {
+    fail('Not implemented');
+  });
+  test('should provide message to tap for tooltip on mobile', () => {
+    fail('Not implemented');
+  });
 });
