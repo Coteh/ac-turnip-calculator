@@ -6,6 +6,7 @@ import largeBellImg from './../icon/large_bag.png';
 import mediumBellImg from './../icon/medium_bag.png';
 import smallBellImg from './../icon/small_bag.png';
 import coinImg from './../icon/coin.png';
+import MobileCheck from '../util/MobileCheck';
 
 export default function TipDisplay(props: any) {
   const { tip } = props;
@@ -46,18 +47,34 @@ export default function TipDisplay(props: any) {
         amount={largeBags}
         imgSrc={largeBellImg}
         alt={'Large Bell Bag Icon'}
+        bellQuantity={99000}
       />
       <BellDisplay
         amount={mediumBags}
         imgSrc={mediumBellImg}
         alt={'Medium Bell Bag Icon'}
+        bellQuantity={10000}
       />
       <BellDisplay
         amount={smallBags}
         imgSrc={smallBellImg}
         alt={'Small Bell Bag Icon'}
+        bellQuantity={1000}
       />
-      <BellDisplay amount={coins} imgSrc={coinImg} alt={'Coin Icon'} />
+      <BellDisplay
+        amount={coins}
+        imgSrc={coinImg}
+        alt={'Coin Icon'}
+        bellQuantity={100}
+      />
+      <br />
+      {(() => {
+        if (MobileCheck.isMobile()) {
+          return <span>Tap the bell icons to view their quantities</span>;
+        } else {
+          return <span>Hover the bell icons to view their quantities</span>;
+        }
+      })()}
     </div>
   );
 }
