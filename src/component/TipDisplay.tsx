@@ -68,13 +68,15 @@ export default function TipDisplay(props: any) {
         bellUnits={100}
       />
       <br />
-      {(() => {
-        if (MobileCheck.isMobile()) {
-          return <span>Tap the bell icons to view their quantities</span>;
-        } else {
-          return <span>Hover the bell icons to view their quantities</span>;
-        }
-      })()}
+      <span>
+        {(() => {
+          if (MobileCheck.isMobile()) {
+            return <>Tap the bell icons to view their quantities</>;
+          } else {
+            return <>Hover the bell icons to view their quantities</>;
+          }
+        })()}
+      </span>
     </div>
   );
 }
