@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, getByRole, fireEvent } from '@testing-library/react';
 import BellDisplay from './BellDisplay';
 
 describe('BellDisplay component', () => {
@@ -7,12 +7,59 @@ describe('BellDisplay component', () => {
     render(<BellDisplay />);
   });
   test('should display amount passed in as prop', () => {
-    fail('Not implemented');
+    const expectedAmount: number = 12;
+    const { getByText } = render(<BellDisplay amount={expectedAmount} />);
+
+    const elem = getByText(expectedAmount.toString());
+    expect(elem).toBeTruthy();
   });
   test('should display icon passed in via image src as prop', () => {
-    fail('Not implemented');
+    const expectedSrc: string = 'fake_image.jpg';
+    const { getByRole } = render(<BellDisplay imgSrc={expectedSrc} />);
+
+    const elem = getByRole('img');
+    expect(elem.getAttribute('src')).toBe(expectedSrc);
   });
   test('should display img alt text passed in as prop', () => {
-    fail('Not implemented');
+    const expectedAlt: string = 'An image.';
+    const { getByRole } = render(<BellDisplay alt={expectedAlt} />);
+
+    const elem = getByRole('img');
+    expect(elem.getAttribute('alt')).toBe(expectedAlt);
+  });
+  test('should display tooltip with bell units and bell amount on mouse hover (desktop)', () => {
+    const expectedAmount: number = 12;
+    const expectedUnits: number = 1000;
+
+    const { getByText } = render(
+      <BellDisplay amount={expectedAmount} bellUnits={expectedUnits} />,
+    );
+
+    const topElem = getByText(expectedAmount.toString());
+    expect(topElem).toBeTruthy();
+    fireEvent.mouseOver(topElem);
+    const tooltip = getByText(`${expectedAmount} stacks of`);
+    expect(tooltip).toBeTruthy();
+    expect(tooltip.textContent).toBe(
+      `${expectedAmount} stacks of ${expectedUnits} bells`,
+    );
+  });
+  test('should display tooltip with quantity and bell amount on tap (mobile)', () => {
+    const expectedAmount: number = 12;
+    const expectedUnits: number = 1000;
+
+    const { getByText } = render(
+      <BellDisplay amount={expectedAmount} bellUnits={expectedUnits} />,
+    );
+
+    const topElem = getByText(expectedAmount.toString());
+    expect(topElem).toBeTruthy();
+    // TODO change user agent to mobile but desktop can still tap so may not be required
+    fireEvent.click(topElem);
+    const tooltip = getByText(`${expectedAmount} stacks of`);
+    expect(tooltip).toBeTruthy();
+    expect(tooltip.textContent).toBe(
+      `${expectedAmount} stacks of ${expectedUnits} bells`,
+    );
   });
 });
