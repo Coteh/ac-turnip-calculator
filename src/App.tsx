@@ -4,20 +4,28 @@ import RottenTurnip from './icon/turnip_rotten.png';
 import './App.css';
 import TurnipCalculator from './component/TurnipCalculator';
 import GitHubCorner from './component/vendor/GitHubCorner';
+import TipDisplay from './component/TipDisplay';
 
 function App() {
   const [turnipImgSrc, setTurnipImgSrc] = useState(Turnip);
+  const [buyPrice, setBuyPrice] = useState(0);
+  const [tip, setTip] = useState(0);
 
   function onPriceCalculated(
     buyPrice: number,
     turnipPrice: number,
     numTurnips: number,
   ) {
-    if (turnipPrice < 100) {
+    if (turnipPrice > 0 && turnipPrice < 100) {
       setTurnipImgSrc(RottenTurnip);
     } else {
       setTurnipImgSrc(Turnip);
     }
+    setBuyPrice(buyPrice);
+  }
+
+  function onTipCalculated(tip: number) {
+    setTip(tip);
   }
 
   return (
@@ -27,7 +35,25 @@ function App() {
         <img src={turnipImgSrc} className="App-logo" alt="logo" />
       </header>
       <h1>Animal Crossing Turnip Calculator</h1>
-      <TurnipCalculator onPriceCalculated={onPriceCalculated} />
+      <TurnipCalculator
+        onPriceCalculated={onPriceCalculated}
+        onTipCalculated={onTipCalculated}
+      />
+      {(() => {
+        if (buyPrice > 0) {
+          return (
+            <>
+              <label>
+                Buy Price will be: <b>{buyPrice}</b> bells
+              </label>
+              <br />
+              <TipDisplay tip={tip} />
+            </>
+          );
+        } else {
+          return <></>;
+        }
+      })()}
       <footer>&copy; 2020 James Cote</footer>
     </div>
   );

@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import TipDisplay from './TipDisplay';
+import React, { useState, useEffect } from 'react';
 import FormInputField from './form/FormInputField';
 import { css } from 'emotion';
 
 export default function TurnipCalculator(props: any) {
-  const [price, setPrice] = useState(347);
+  const [price, setPrice] = useState(0);
   const [turnips, setTurnips] = useState(4000);
   const [buyPrice, setBuyPrice] = useState(0);
   const [tipPercent, setTipPercent] = useState(10);
   const [tip, setTip] = useState(0);
 
-  const { onPriceCalculated } = props;
+  const { onPriceCalculated, onTipCalculated } = props;
   const inputStyle = css`
     padding: 12px;
     margin: 16px;
@@ -19,25 +18,21 @@ export default function TurnipCalculator(props: any) {
     font-size: 20px;
   `;
 
-  const buyCallback = useCallback(calculateBuyPrice, [price, turnips]);
-  const tipCallback = useCallback(calculateTip, [buyPrice, tipPercent]);
-
   useEffect(() => {
-    buyCallback();
-  }, [buyCallback]);
-
-  useEffect(() => {
-    tipCallback();
-  }, [tipCallback]);
-
-  function calculateBuyPrice() {
     setBuyPrice(price * turnips);
-    onPriceCalculated(buyPrice, price, turnips);
-  }
+  }, [price, turnips]);
 
-  function calculateTip() {
+  useEffect(() => {
     setTip(buyPrice * (tipPercent / 100));
-  }
+  }, [buyPrice, tipPercent]);
+
+  useEffect(() => {
+    onPriceCalculated(buyPrice, price, turnips);
+  }, [buyPrice, price, turnips, onPriceCalculated]);
+
+  useEffect(() => {
+    onTipCalculated(tip);
+  }, [tip, onTipCalculated]);
 
   function parseNumericInputValue(value: string): number {
     if (value === '') {
@@ -97,21 +92,6 @@ export default function TurnipCalculator(props: any) {
         <br />
         <br />
       </form>
-      {(() => {
-        if (buyPrice > 0) {
-          return (
-            <>
-              <label>
-                Buy Price will be: <b>{buyPrice}</b> bells
-              </label>
-              <br />
-              <TipDisplay tip={tip} />
-            </>
-          );
-        } else {
-          return <></>;
-        }
-      })()}
     </div>
   );
 }
