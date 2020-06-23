@@ -4,7 +4,7 @@ import { css } from 'emotion';
 import MobileCheck from '../util/MobileCheck';
 
 export default function BellDisplay(props: any) {
-  const { amount, imgSrc, alt, bellQuantity } = props;
+  const { amount, imgSrc, alt, bellUnits } = props;
 
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -19,8 +19,8 @@ export default function BellDisplay(props: any) {
         font-size: 16px;
       `}
     >
-      {amount} stack{(() => (amount !== 1 ? 's' : ''))()} of{' '}
-      <b>{bellQuantity} bells</b>
+      {(() => `${amount} stack${amount !== 1 ? 's' : ''} of `)()}
+      <b>{bellUnits} bells</b>
     </div>
   ) : (
     <></>
@@ -54,7 +54,7 @@ export default function BellDisplay(props: any) {
         `}
         alt={alt}
         src={imgSrc}
-        title={bellQuantity + ' bells'}
+        title={bellUnits + ' bells'}
       />
       {amount}
       {tooltip}

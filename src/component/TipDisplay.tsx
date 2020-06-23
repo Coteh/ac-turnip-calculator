@@ -47,25 +47,25 @@ export default function TipDisplay(props: any) {
         amount={largeBags}
         imgSrc={largeBellImg}
         alt={'Large Bell Bag Icon'}
-        bellQuantity={99000}
+        bellUnits={99000}
       />
       <BellDisplay
         amount={mediumBags}
         imgSrc={mediumBellImg}
         alt={'Medium Bell Bag Icon'}
-        bellQuantity={10000}
+        bellUnits={10000}
       />
       <BellDisplay
         amount={smallBags}
         imgSrc={smallBellImg}
         alt={'Small Bell Bag Icon'}
-        bellQuantity={1000}
+        bellUnits={1000}
       />
       <BellDisplay
         amount={coins}
         imgSrc={coinImg}
         alt={'Coin Icon'}
-        bellQuantity={100}
+        bellUnits={100}
       />
       <br />
       {(() => {
