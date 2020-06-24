@@ -25,7 +25,7 @@ When travelling to other players' islands via r/acturnips to sell turnips, it's 
 
 ## Future Additions
 
-- Calculate profit (based off of original Daisy Mae price) #26
+- Calculate profit (based off of original Daisy Mae price) [#26](../../issues/26)
 
 ## Non-Features
 
