@@ -29,12 +29,18 @@ export default function TipDisplay(props: any) {
   return (
     <div
       className={css`
-        padding: 8px;
+        padding: 12px;
         width: 25%;
-        border: 5px solid #9c9988;
-        border-radius: 8px;
+        border-radius: 16px;
         background-color: #7b6c53;
+        color: #f8f8f8;
         margin: 20px auto;
+        @media (max-width: 1024px) {
+          width: 50%;
+        }
+        @media (max-width: 480px) {
+          width: 75%;
+        }
       `}
     >
       <label>

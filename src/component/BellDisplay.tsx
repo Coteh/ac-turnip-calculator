@@ -13,7 +13,7 @@ export default function BellDisplay(props: any) {
       className={css`
         position: absolute;
         border: 1px solid black;
-        border-radius: 8px;
+        border-radius: 16px;
         background-color: goldenrod;
         padding: 8px;
         font-size: 16px;
