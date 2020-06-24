@@ -1,6 +1,14 @@
 # ac-turnip-calculator
 
-A simple React application I made to quickly calculate turnip buy price and how much to tip. This is especially useful when I'm travelling to other players' islands (via r/acturnips) to sell my turnips. It's a community custom to always tip when you sell at other peoples' islands, and I find it useful to see at a glance exactly how many bell bags I need to leave for the other player before I leave. This would ultimately save a lot of time, especially since other players coming in and out of the island can delay time on the visiting island significantly.
+[![CircleCI](https://circleci.com/gh/Coteh/ac-turnip-calculator.svg?style=shield)](https://circleci.com/gh/Coteh/ac-turnip-calculator)
+
+A simple React application I made to quickly calculate total amount of bells the Nooklings will spend on your turnips given the buy price and quantity of turnips. It will also calculate how much to tip, in the case that you are on another player's island and want to tip them.
+
+**[Click here to open](https://acturnip-calc.netlify.app/)**
+
+## Motivation
+
+When travelling to other players' islands via r/acturnips to sell turnips, it's generally expected to give the players hosting the island a tip. I found myself having to do quick mental maths and opening a calculator every time I wanted to calculate how many stacks of bells I needed to leave for the player for a 10% tip (the community standard tip percentage). Although the calculation is rather simple, I wanted to build a tool that automatically did it so I can save time.
 
 **This project is still under construction.**
 
@@ -13,6 +21,10 @@ A simple React application I made to quickly calculate turnip buy price and how 
 - Calculates the following:
   - Amount of bells the Nooklings will pay you for your turnips given the price and quantity
   - Amount of bells to tip the player, given buy price and tip percentage
+
+## Non-Features
+
+- Calculates turnip price trajectories (use [Turnip Prophet](https://turnipprophet.io/) for that instead)
 
 ## Setup
 
