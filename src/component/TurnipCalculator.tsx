@@ -27,11 +27,11 @@ export default function TurnipCalculator(props: any) {
   }, [buyPrice, tipPercent]);
 
   useEffect(() => {
-    onPriceCalculated(buyPrice, price, turnips);
+    onPriceCalculated?.(buyPrice, price, turnips);
   }, [buyPrice, price, turnips, onPriceCalculated]);
 
   useEffect(() => {
-    onTipCalculated(tip);
+    onTipCalculated?.(tip);
   }, [tip, onTipCalculated]);
 
   function parseNumericInputValue(value: string): number {
@@ -52,6 +52,7 @@ export default function TurnipCalculator(props: any) {
           label={'Input Price:'}
           input={
             <input
+              aria-label="price"
               className={inputStyle}
               value={price}
               onChange={(e) => setPrice(parseNumericInputValue(e.target.value))}
@@ -63,6 +64,7 @@ export default function TurnipCalculator(props: any) {
           label={'Number of Turnips:'}
           input={
             <input
+              aria-label="turnips"
               className={inputStyle}
               value={turnips}
               onChange={(e) =>
@@ -76,6 +78,7 @@ export default function TurnipCalculator(props: any) {
           label={'Set Tip percentage:'}
           input={
             <input
+              aria-label="tip_percent"
               className={inputStyle}
               value={tipPercent}
               onChange={(e) => {
