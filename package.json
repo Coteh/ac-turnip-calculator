@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "coteh-react-scripts": "3.4.1",
+    "coteh-react-scripts": "3.4.2",
     "emotion": "^10.0.27",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
@@ -26,6 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-ci": "CI=true yarn test --coverage --coverageProvider=v8",
     "eject": "react-scripts eject",
     "lint": "eslint --ext js,ts,tsx src",
     "format": "prettier --config ./.prettierrc --write ."
