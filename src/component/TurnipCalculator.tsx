@@ -16,6 +16,9 @@ export default function TurnipCalculator(props: any) {
     border: 1px solid green;
     border-radius: 8px;
     font-size: 20px;
+    @media (pointer: none), (pointer: coarse) {
+      border-radius: 16px;
+    }
   `;
 
   useEffect(() => {
