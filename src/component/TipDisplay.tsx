@@ -44,7 +44,7 @@ export default function TipDisplay(props: any) {
       `}
     >
       <label>
-        You should tip: <b>{tip}</b> bells
+        If you want to provide a tip, then tip: <b>{tip}</b> bells
       </label>
       <br />
       <span>Thats...</span>
