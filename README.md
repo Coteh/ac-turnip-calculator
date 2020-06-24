@@ -5,7 +5,7 @@
 
 A simple React application I made to quickly calculate total amount of bells the Nooklings will spend on your turnips given the buy price and quantity of turnips. It will also calculate how much to tip, in the case that you are on another player's island and want to tip them.
 
-**[Click here to open](https://acturnip-calc.netlify.app/)**
+**[Click here to open](https://acturnip.netlify.app/)**
 
 ![Preview](screenshot.png 'Preview Image')
 
