@@ -11,7 +11,9 @@ A simple React application I made to quickly calculate total amount of bells the
 
 ## Motivation
 
-When travelling to other players' islands via [r/acturnips](https://www.reddit.com/r/acturnips/) to sell turnips, it's generally expected to give the players hosting the island a tip. I found myself having to do quick mental maths and opening a calculator every time I wanted to calculate how many stacks of bells I needed to leave for the player for a 10% tip (the community standard tip percentage). Although the calculation is rather simple, I wanted to build a tool that automatically did it so I can save time.
+When travelling to other players' islands via [r/acturnips](https://www.reddit.com/r/acturnips/) to sell turnips, players can choose to provide the hosting player a tip, which would be a percentage of their earnings. It is certainly not required to tip at all, but I do it because the player took time out of their day to host their island and I want to give something to them in return.
+
+When figuring out how many bells to leave for the player, I found myself having to do quick mental maths and opening a calculator every time. I wanted to build a tool that automatically did it so I can save time.
 
 ## Features
 
