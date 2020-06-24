@@ -43,6 +43,14 @@ describe('App component', () => {
     });
 
     getByAltText('Turnip');
+
+    fireEvent.change(priceField, {
+      target: {
+        value: 660,
+      },
+    });
+
+    getByAltText('Turnip');
   });
   test('should show rotten turnip image if price is between 1 and 99', () => {
     const { getByRole, getByAltText } = render(<App />);
@@ -62,6 +70,14 @@ describe('App component', () => {
     fireEvent.change(priceField, {
       target: {
         value: 2,
+      },
+    });
+
+    getByAltText('Rotten Turnip');
+
+    fireEvent.change(priceField, {
+      target: {
+        value: 50,
       },
     });
 
