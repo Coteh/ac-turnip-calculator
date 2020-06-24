@@ -1,6 +1,7 @@
 # ac-turnip-calculator
 
 [![CircleCI](https://circleci.com/gh/Coteh/ac-turnip-calculator.svg?style=shield)](https://circleci.com/gh/Coteh/ac-turnip-calculator)
+[![codecov](https://codecov.io/gh/Coteh/ac-turnip-calculator/branch/master/graph/badge.svg)](https://codecov.io/gh/Coteh/ac-turnip-calculator)
 
 A simple React application I made to quickly calculate total amount of bells the Nooklings will spend on your turnips given the buy price and quantity of turnips. It will also calculate how much to tip, in the case that you are on another player's island and want to tip them.
 
@@ -28,8 +29,28 @@ When travelling to other players' islands via r/acturnips to sell turnips, it's 
 
 ## Setup
 
+### Development
+
 You can run the following to start the server in development mode: (standard CRA setup atm)
 
 ```
 yarn start
+```
+
+### Build
+
+Run the following command to build web app for production:
+
+```
+yarn build
+```
+
+Web app will be built to the `build` directory.
+
+## Running Tests
+
+Run the following command to run tests:
+
+```
+yarn test
 ```
