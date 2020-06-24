@@ -26,6 +26,7 @@ When travelling to other players' islands via [r/acturnips](https://www.reddit.c
 ## Future Additions
 
 - Calculate profit (based off of original Daisy Mae price) [#26](../../issues/26)
+- Port to React Native
 
 ## Non-Features
 
