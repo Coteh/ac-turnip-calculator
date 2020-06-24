@@ -8,6 +8,7 @@ import TipDisplay from './component/TipDisplay';
 
 function App() {
   const [turnipImgSrc, setTurnipImgSrc] = useState(Turnip);
+  const [turnipImgAlt, setTurnipImgAlt] = useState('Turnip');
   const [buyPrice, setBuyPrice] = useState(0);
   const [tip, setTip] = useState(0);
 
@@ -18,8 +19,10 @@ function App() {
   ) {
     if (turnipPrice > 0 && turnipPrice < 100) {
       setTurnipImgSrc(RottenTurnip);
+      setTurnipImgAlt('Rotten Turnip');
     } else {
       setTurnipImgSrc(Turnip);
+      setTurnipImgAlt('Turnip');
     }
     setBuyPrice(buyPrice);
   }
@@ -32,7 +35,7 @@ function App() {
     <div className="App">
       <GitHubCorner />
       <header className="App-header">
-        <img src={turnipImgSrc} className="App-logo" alt="logo" />
+        <img src={turnipImgSrc} className="App-logo" alt={turnipImgAlt} />
       </header>
       <h1>Animal Crossing Turnip Calculator</h1>
       <TurnipCalculator
