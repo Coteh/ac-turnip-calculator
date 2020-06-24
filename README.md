@@ -28,8 +28,28 @@ When travelling to other players' islands via r/acturnips to sell turnips, it's 
 
 ## Setup
 
+### Development
+
 You can run the following to start the server in development mode: (standard CRA setup atm)
 
 ```
 yarn start
+```
+
+### Build
+
+Run the following command to build web app for production:
+
+```
+yarn build
+```
+
+Web app will be built to the `build` directory.
+
+## Running Tests
+
+Run the following command to run tests:
+
+```
+yarn test
 ```
