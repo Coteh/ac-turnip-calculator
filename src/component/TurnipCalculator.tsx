@@ -50,7 +50,13 @@ export default function TurnipCalculator(props: any) {
 
   return (
     <div className={'turnip-calc'}>
-      <form action="">
+      <form
+        action=""
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+        }}
+      >
         <FormInputField
           label={'Input Price:'}
           input={
