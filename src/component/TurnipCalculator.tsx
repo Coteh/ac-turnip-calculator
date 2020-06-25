@@ -50,13 +50,7 @@ export default function TurnipCalculator(props: any) {
 
   return (
     <div className={'turnip-calc'}>
-      <form
-        action=""
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-        }}
-      >
+      <form action="">
         <FormInputField
           label={'Input Price:'}
           input={
@@ -68,7 +62,6 @@ export default function TurnipCalculator(props: any) {
             />
           }
         />
-        <br />
         <FormInputField
           label={'Number of Turnips:'}
           input={
@@ -82,7 +75,6 @@ export default function TurnipCalculator(props: any) {
             />
           }
         />
-        <br />
         <FormInputField
           label={'Set Tip percentage:'}
           input={
@@ -101,7 +93,6 @@ export default function TurnipCalculator(props: any) {
             />
           }
         />
-        <br />
         <br />
       </form>
     </div>
