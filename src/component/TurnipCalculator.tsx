@@ -9,6 +9,8 @@ export default function TurnipCalculator(props: any) {
   const [tipPercent, setTipPercent] = useState(10);
   const [tip, setTip] = useState(0);
 
+  const ROUND_TO_NEAREST: number = 100;
+
   const { onPriceCalculated, onTipCalculated } = props;
   const inputStyle = css`
     padding: 12px;
@@ -26,7 +28,10 @@ export default function TurnipCalculator(props: any) {
   }, [price, turnips]);
 
   useEffect(() => {
-    setTip(buyPrice * (tipPercent / 100));
+    setTip(
+      Math.round((buyPrice * (tipPercent / 100)) / ROUND_TO_NEAREST) *
+        ROUND_TO_NEAREST,
+    );
   }, [buyPrice, tipPercent]);
 
   useEffect(() => {
