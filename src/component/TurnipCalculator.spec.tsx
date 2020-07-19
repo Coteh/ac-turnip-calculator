@@ -129,4 +129,55 @@ describe('TurnipCalculator component', () => {
 
     expect(handler).toHaveBeenLastCalledWith(expectedTip);
   });
+  test('should round tips to nearest hundredth', () => {
+    const handler = jest.fn();
+
+    const { getByRole } = render(
+      <TurnipCalculator onTipCalculated={handler} />,
+    );
+
+    const priceField = getByRole('textbox', {
+      name: 'price',
+    });
+    const turnipsField = getByRole('textbox', {
+      name: 'turnips',
+    });
+    const tipField = getByRole('textbox', {
+      name: 'tip_percent',
+    });
+
+    fireEvent.change(priceField, {
+      target: {
+        value: 100,
+      },
+    });
+    fireEvent.change(turnipsField, {
+      target: {
+        value: 104,
+      },
+    });
+    fireEvent.change(tipField, {
+      target: {
+        value: 10,
+      },
+    });
+    expect(handler).toHaveBeenLastCalledWith(1000);
+
+    fireEvent.change(priceField, {
+      target: {
+        value: 100,
+      },
+    });
+    fireEvent.change(turnipsField, {
+      target: {
+        value: 106,
+      },
+    });
+    fireEvent.change(tipField, {
+      target: {
+        value: 10,
+      },
+    });
+    expect(handler).toHaveBeenLastCalledWith(1100);
+  });
 });
