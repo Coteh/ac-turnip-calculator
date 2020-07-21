@@ -2,6 +2,7 @@
   "name": "ac-turnip-calculator",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "dependencies": {
     "coteh-react-scripts": "3.4.2",
     "emotion": "^10.0.27",
