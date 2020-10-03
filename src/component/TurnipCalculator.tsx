@@ -40,7 +40,7 @@ export default function TurnipCalculator(props: any) {
         setBuyPrice(price * turnips);
       }
     }
-  }, [price, turnips]);
+  }, [price, turnips, alertPrice, alertTurnip]);
 
   useEffect(() => {
     setTip(
