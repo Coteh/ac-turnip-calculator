@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import FormInputField from './form/FormInputField';
+import Alert from './alert/Alert';
 import { css } from 'emotion';
 
 export default function TurnipCalculator(props: any) {
+  const firstUpdate = useRef(true);
   const [price, setPrice] = useState(0);
   const [turnips, setTurnips] = useState(4000);
   const [buyPrice, setBuyPrice] = useState(0);
   const [tipPercent, setTipPercent] = useState(10);
   const [tip, setTip] = useState(0);
+
+  const [alertPrice, setAlertPrice] = useState(false);
+  const [alertTurnip, setAlertTurnip] = useState(false);
 
   const ROUND_TO_NEAREST: number = 100;
 
@@ -24,7 +29,17 @@ export default function TurnipCalculator(props: any) {
   `;
 
   useEffect(() => {
-    setBuyPrice(price * turnips);
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      setBuyPrice(price * turnips);
+    } else {
+      setAlertPrice(price === 0);
+      setAlertTurnip(turnips === 0);
+
+      if (!alertPrice && !alertTurnip) {
+        setBuyPrice(price * turnips);
+      }
+    }
   }, [price, turnips]);
 
   useEffect(() => {
@@ -55,6 +70,17 @@ export default function TurnipCalculator(props: any) {
 
   return (
     <div className={'turnip-calc'}>
+      {alertPrice ? (
+        <Alert message="You can't put 0 as a price" type="error"></Alert>
+      ) : (
+        ''
+      )}
+
+      {alertTurnip ? (
+        <Alert message="You can't put 0 as turnips number" type="error"></Alert>
+      ) : (
+        ''
+      )}
       <form action="">
         <FormInputField
           label={'Input Price:'}
