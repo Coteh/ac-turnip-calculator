@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import TurnipCalculator from './TurnipCalculator';
 
 describe('TurnipCalculator component', () => {
@@ -179,5 +179,119 @@ describe('TurnipCalculator component', () => {
       },
     });
     expect(handler).toHaveBeenLastCalledWith(1100);
+  });
+
+  test("should not show the error alert if user doesn't do anything", () => {
+    const handler = jest.fn();
+
+    const { queryByTestId } = render(
+      <TurnipCalculator onTipCalculated={handler} />,
+    );
+
+    const errorAlert = queryByTestId('ErrorAlert');
+    expect(errorAlert).toBeNull();
+  });
+
+  test('should show the error alert if user types zero on the price field', () => {
+    const { getByRole, queryByTestId } = render(<TurnipCalculator />);
+
+    const priceField = getByRole('textbox', {
+      name: 'price',
+    });
+
+    fireEvent.change(priceField, {
+      target: {
+        value: 20,
+      },
+    });
+
+    fireEvent.change(priceField, {
+      target: {
+        value: 0,
+      },
+    });
+
+    const errorAlert = queryByTestId('ErrorAlert');
+    expect(errorAlert).toBeTruthy();
+  });
+
+  test('should show the error alert if user types zero on the turnips field', () => {
+    const { getByRole, queryAllByTestId } = render(<TurnipCalculator />);
+
+    const turnipsField = getByRole('textbox', {
+      name: 'turnips',
+    });
+
+    fireEvent.change(turnipsField, {
+      target: {
+        value: 0,
+      },
+    });
+
+    const errorAlert = queryAllByTestId('ErrorAlert');
+    expect(errorAlert).toBeTruthy();
+  });
+
+  test('should not show the error alert if user types a non-zero value on the price field', () => {
+    const { getByRole, queryByTestId } = render(<TurnipCalculator />);
+
+    const priceField = getByRole('textbox', {
+      name: 'price',
+    });
+
+    fireEvent.change(priceField, {
+      target: {
+        value: 20,
+      },
+    });
+
+    const errorAlert = queryByTestId('ErrorAlert');
+    expect(errorAlert).toBeNull();
+  });
+
+  test('should not show the error alert if user types a non-zero value on the turnips field', () => {
+    const { getByRole, queryByTestId } = render(<TurnipCalculator />);
+
+    const priceField = getByRole('textbox', {
+      name: 'price',
+    });
+
+    const turnipsField = getByRole('textbox', {
+      name: 'turnips',
+    });
+
+    fireEvent.change(priceField, {
+      target: {
+        value: 20,
+      },
+    });
+
+    fireEvent.change(turnipsField, {
+      target: {
+        value: 50,
+      },
+    });
+
+    const errorAlert = queryByTestId('ErrorAlert');
+    expect(errorAlert).toBeNull();
+  });
+
+  test('should show the error alert if user clicks on price field and the clicks out', () => {
+    const { getByRole, queryByTestId } = render(<TurnipCalculator />);
+
+    const priceField = getByRole('textbox', {
+      name: 'price',
+    });
+
+    const turnipsField = getByRole('textbox', {
+      name: 'turnips',
+    });
+
+    fireEvent.blur(priceField);
+
+    fireEvent.blur(turnipsField);
+
+    const errorAlert = queryByTestId('ErrorAlert');
+    expect(errorAlert).toBeTruthy();
   });
 });

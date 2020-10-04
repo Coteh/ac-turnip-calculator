@@ -13,7 +13,11 @@ export default function ErrorAlert(props: any) {
     fontWeight: '600',
   } as any;
 
-  return <div style={style}>{message}</div>;
+  return (
+    <div data-testid="ErrorAlert" style={style}>
+      {message}
+    </div>
+  );
 }
 
 ErrorAlert.propTypes = {
