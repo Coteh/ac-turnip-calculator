@@ -3,7 +3,7 @@ import React from 'react';
 import { css } from 'emotion';
 
 export default function FormInputField(props: any) {
-  const { label, input, inputmode = 'numeric' } = props;
+  const { label, input, inputmode = 'decimal' } = props;
 
   return (
     <div
