@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FormInputField from './form/FormInputField';
-import Alert from './alert/Alert';
+import ErrorAlert from './alert/ErrorAlert';
 import { css } from 'emotion';
 
 export default function TurnipCalculator(props: any) {
@@ -57,6 +57,14 @@ export default function TurnipCalculator(props: any) {
     onTipCalculated?.(tip);
   }, [tip, onTipCalculated]);
 
+  function checkPriceZeroValue(value: string) {
+    setAlertPrice(value === '0');
+  }
+
+  function checkTurnipZeroValue(value: string) {
+    setAlertTurnip(value === '0');
+  }
+
   function parseNumericInputValue(value: string): number {
     if (value === '') {
       return 0;
@@ -71,13 +79,13 @@ export default function TurnipCalculator(props: any) {
   return (
     <div className={'turnip-calc'}>
       {alertPrice ? (
-        <Alert message="You can't put 0 as a price" type="error"></Alert>
+        <ErrorAlert message="You can't put 0 as a price"></ErrorAlert>
       ) : (
         ''
       )}
 
       {alertTurnip ? (
-        <Alert message="You can't put 0 as turnips number" type="error"></Alert>
+        <ErrorAlert message="You can't put 0 as turnips number"></ErrorAlert>
       ) : (
         ''
       )}
@@ -90,6 +98,7 @@ export default function TurnipCalculator(props: any) {
               className={inputStyle}
               value={price}
               onChange={(e) => setPrice(parseNumericInputValue(e.target.value))}
+              onBlur={(event) => checkPriceZeroValue(event.target.value)}
             />
           }
         />
@@ -103,6 +112,7 @@ export default function TurnipCalculator(props: any) {
               onChange={(e) =>
                 setTurnips(parseNumericInputValue(e.target.value))
               }
+              onBlur={(event) => checkTurnipZeroValue(event.target.value)}
             />
           }
         />
