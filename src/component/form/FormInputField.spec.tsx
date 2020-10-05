@@ -1,15 +1,17 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import FormInputField from './FormInputField';
 
 describe('FormInputField component', () => {
   test('should render without crash', () => {
-    render(<FormInputField />);
+    render(<FormInputField input={<input></input>} />);
   });
   test('should render label with supplied label text', () => {
     const labelText = 'Test Label';
 
-    const { container } = render(<FormInputField label={labelText} />);
+    const { container } = render(
+      <FormInputField label={labelText} input={<input></input>} />,
+    );
 
     const labelElem = container.querySelector('label');
     expect(labelElem).toHaveTextContent(labelText);
