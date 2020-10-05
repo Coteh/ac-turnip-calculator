@@ -3,7 +3,14 @@ import React, { useState } from 'react';
 import { css } from 'emotion';
 import MobileCheck from '../util/MobileCheck';
 
-export default function BellDisplay(props: any) {
+export interface BellDisplayProps {
+  amount: number;
+  imgSrc: string;
+  alt: string;
+  bellUnits: number;
+}
+
+export default function BellDisplay(props: BellDisplayProps) {
   const { amount, imgSrc, alt, bellUnits } = props;
 
   const [showTooltip, setShowTooltip] = useState(false);
@@ -22,12 +29,10 @@ export default function BellDisplay(props: any) {
       {(() => `${amount} stack${amount !== 1 ? 's' : ''} of `)()}
       <b>{bellUnits} bells</b>
     </div>
-  ) : (
-    <></>
-  );
+  ) : null;
 
   if (amount === 0) {
-    return <></>;
+    return null;
   }
 
   return (

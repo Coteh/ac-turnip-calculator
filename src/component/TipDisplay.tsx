@@ -8,7 +8,11 @@ import smallBellImg from './../icon/small_bag.png';
 import coinImg from './../icon/coin.png';
 import MobileCheck from '../util/MobileCheck';
 
-export default function TipDisplay(props: any) {
+export interface TipDisplayProps {
+  tip: number;
+}
+
+export default function TipDisplay(props: TipDisplayProps) {
   const { tip } = props;
   const [coins, setCoins] = useState(0);
   const [smallBags, setSmallBags] = useState(0);
@@ -75,13 +79,11 @@ export default function TipDisplay(props: any) {
       />
       <br />
       <span>
-        {(() => {
-          if (MobileCheck.isMobile()) {
-            return <>Tap the bell icons to view their quantities</>;
-          } else {
-            return <>Hover the bell icons to view their quantities</>;
-          }
-        })()}
+        {MobileCheck.isMobile() ? (
+          <>Tap the bell icons to view their quantities</>
+        ) : (
+          <>Hover the bell icons to view their quantities</>
+        )}
       </span>
     </div>
   );

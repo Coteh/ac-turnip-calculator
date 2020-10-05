@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Turnip from './icon/turnip.png';
 import RottenTurnip from './icon/turnip_rotten.png';
 import './App.css';
-import TurnipCalculator from './component/TurnipCalculator';
+import TurnipCalculator, {
+  TurnipCalculatorProps,
+} from './component/TurnipCalculator';
 import GitHubCorner from './component/vendor/GitHubCorner';
 import TipDisplay from './component/TipDisplay';
 
@@ -14,11 +16,11 @@ function App() {
   const [buyPrice, setBuyPrice] = useState(0);
   const [tip, setTip] = useState(0);
 
-  function onPriceCalculated(
-    buyPrice: number,
-    turnipPrice: number,
-    numTurnips: number,
-  ) {
+  const onPriceCalculated: TurnipCalculatorProps['onPriceCalculated'] = (
+    buyPrice,
+    turnipPrice,
+    numTurnips,
+  ) => {
     if (turnipPrice > 0 && turnipPrice < 100) {
       setTurnipImgSrc(RottenTurnip);
       setTurnipImgAlt('Rotten Turnip');
@@ -27,11 +29,13 @@ function App() {
       setTurnipImgAlt('Turnip');
     }
     setBuyPrice(buyPrice);
-  }
+  };
 
-  function onTipCalculated(tip: number) {
+  const onTipCalculated: TurnipCalculatorProps['onTipCalculated'] = (
+    tip: number,
+  ) => {
     setTip(tip);
-  }
+  };
 
   return (
     <div

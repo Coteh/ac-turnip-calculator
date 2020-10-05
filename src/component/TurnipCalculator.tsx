@@ -2,14 +2,23 @@ import React, { useState, useEffect } from 'react';
 import FormInputField from './form/FormInputField';
 import { css } from 'emotion';
 
-export default function TurnipCalculator(props: any) {
+export interface TurnipCalculatorProps {
+  onPriceCalculated: (
+    buyPrice: number,
+    turnipPrice: number,
+    numTurnips: number,
+  ) => void;
+  onTipCalculated: (tip: number) => void;
+}
+
+export default function TurnipCalculator(props: TurnipCalculatorProps) {
   const [price, setPrice] = useState(0);
   const [turnips, setTurnips] = useState(4000);
   const [buyPrice, setBuyPrice] = useState(0);
   const [tipPercent, setTipPercent] = useState(10);
   const [tip, setTip] = useState(0);
 
-  const ROUND_TO_NEAREST: number = 100;
+  const ROUND_TO_NEAREST = 100;
 
   const { onPriceCalculated, onTipCalculated } = props;
   const inputStyle = css`
@@ -42,11 +51,11 @@ export default function TurnipCalculator(props: any) {
     onTipCalculated?.(tip);
   }, [tip, onTipCalculated]);
 
-  function parseNumericInputValue(value: string): number {
+  function parseNumericInputValue(value: string) {
     if (value === '') {
       return 0;
     }
-    const parsedValue: number = parseInt(value);
+    const parsedValue = parseInt(value);
     if (!isNaN(parsedValue)) {
       return parsedValue;
     }
