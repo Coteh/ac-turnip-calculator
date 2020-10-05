@@ -2,8 +2,14 @@ import React from 'react';
 
 import { css } from 'emotion';
 
-export default function FormInputField(props: any) {
-  const { label, input, inputmode = 'decimal' } = props;
+interface Props {
+  input: JSX.Element;
+  label?: string;
+  inputMode?: string;
+}
+
+export default function FormInputField(props: Props) {
+  const { label, input, inputMode = 'decimal' } = props;
 
   return (
     <div
@@ -29,7 +35,7 @@ export default function FormInputField(props: any) {
       >
         {label}
       </label>
-      {React.cloneElement(input, { inputmode })}
+      {React.cloneElement(input, { inputMode })}
     </div>
   );
 }
