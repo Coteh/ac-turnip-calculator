@@ -1,30 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { css } from 'emotion';
 import MobileCheck from '../util/MobileCheck';
 
 export default function BellDisplay(props: any) {
-  const { amount, imgSrc, alt, bellUnits } = props;
+  const { amount, imgSrc, alt, bellUnits, tooltipName, shownTooltipName, setShownTooltipName } = props;
+  const showTooltip = tooltipName === shownTooltipName;
 
-  const [showTooltip, setShowTooltip] = useState(false);
-
-  const tooltip = showTooltip ? (
-    <div
-      className={css`
-        position: absolute;
-        border: 1px solid black;
-        border-radius: 16px;
-        background-color: goldenrod;
-        padding: 8px;
-        font-size: 16px;
-      `}
-    >
-      {(() => `${amount} stack${amount !== 1 ? 's' : ''} of `)()}
-      <b>{bellUnits} bells</b>
-    </div>
-  ) : (
-    <></>
-  );
+  function setShowTooltip(show: boolean) {
+    setShownTooltipName(show ? tooltipName : "");
+  }
 
   if (amount === 0) {
     return <></>;
@@ -57,7 +42,21 @@ export default function BellDisplay(props: any) {
         title={bellUnits + ' bells'}
       />
       {amount}
-      {tooltip}
+      {showTooltip && (
+        <div
+          className={css`
+            position: absolute;
+            border: 1px solid black;
+            border-radius: 16px;
+            background-color: goldenrod;
+            padding: 8px;
+            font-size: 16px;
+          `}
+        >
+          {`${amount} stack${amount !== 1 ? 's' : ''} of `}
+          <b>{bellUnits} bells</b>
+        </div>
+      )}
     </div>
   );
 }
