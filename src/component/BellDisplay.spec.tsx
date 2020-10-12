@@ -41,7 +41,11 @@ describe('BellDisplay component', () => {
     const expectedUnits: number = 1000;
 
     const { getByText } = render(
-      <BellDisplay amount={expectedAmount} bellUnits={expectedUnits} />,
+      <BellDisplay
+        amount={expectedAmount}
+        bellUnits={expectedUnits}
+        setShownTooltipName={jest.fn()}
+      />,
     );
 
     const topElem = getByText(expectedAmount.toString());
@@ -63,7 +67,11 @@ describe('BellDisplay component', () => {
     const expectedUnits: number = 1000;
 
     const { getByText } = render(
-      <BellDisplay amount={expectedAmount} bellUnits={expectedUnits} />,
+      <BellDisplay
+        amount={expectedAmount}
+        bellUnits={expectedUnits}
+        setShownTooltipName={jest.fn()}
+      />,
     );
 
     const topElem = getByText(expectedAmount.toString());

@@ -72,14 +72,16 @@ describe('TipDisplay component', () => {
 
     MobileCheck.isMobile = mockMobile;
 
-    const { getByAltText, getAllByText, queryAllByText } = render(<TipDisplay tip={11000 * 2} />);
+    const { getByAltText, getAllByText, queryAllByText } = render(
+      <TipDisplay tip={11000 * 2} />,
+    );
     const mediumBellBagIcon = getByAltText('Medium Bell Bag Icon');
     const smallBellBagIcon = getByAltText('Small Bell Bag Icon');
 
     // initially, there should be no tooltips shown
     expect(queryAllByText(/stacks/i)).toHaveLength(0);
 
-    // show  medium bell bags tooltip
+    // show medium bell bags tooltip
     fireEvent.click(mediumBellBagIcon);
 
     const mediumBellBagTooltip = getAllByText(/stacks/i);
