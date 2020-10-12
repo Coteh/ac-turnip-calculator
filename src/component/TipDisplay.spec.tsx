@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import TipDisplay from './TipDisplay';
 
 import MobileCheck from '../util/MobileCheck';
@@ -65,6 +65,37 @@ describe('TipDisplay component', () => {
     const hoverMessage = getByText(/tap/i);
     expect(hoverMessage.textContent).toContain('icons');
     expect(hoverMessage.textContent).toContain('quantities');
+  });
+  test('should show only one tooltip at a time on mobile', () => {
+    const mockMobile = jest.fn();
+    mockMobile.mockReturnValue(true);
+
+    MobileCheck.isMobile = mockMobile;
+
+    const { getByAltText, getAllByText, queryAllByText } = render(<TipDisplay tip={11000 * 2} />);
+    const mediumBellBagIcon = getByAltText('Medium Bell Bag Icon');
+    const smallBellBagIcon = getByAltText('Small Bell Bag Icon');
+
+    // initially, there should be no tooltips shown
+    expect(queryAllByText(/stacks/i)).toHaveLength(0);
+
+    // show  medium bell bags tooltip
+    fireEvent.click(mediumBellBagIcon);
+
+    const mediumBellBagTooltip = getAllByText(/stacks/i);
+    expect(mediumBellBagTooltip).toHaveLength(1);
+
+    // show small bell bags tooltip
+    fireEvent.click(smallBellBagIcon);
+
+    const smallBellBagTooltip = getAllByText(/stacks/i);
+    expect(smallBellBagTooltip).toHaveLength(1);
+
+    // hide small bell bags tooltip
+    fireEvent.click(smallBellBagIcon);
+
+    // no tooltip should be shown
+    expect(queryAllByText(/stacks/i)).toHaveLength(0);
   });
   afterEach(() => {
     jest.clearAllMocks();
