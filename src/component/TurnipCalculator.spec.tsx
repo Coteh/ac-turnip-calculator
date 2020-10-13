@@ -4,22 +4,18 @@ import TurnipCalculator from './TurnipCalculator';
 
 describe('TurnipCalculator component', () => {
   test('should render without crash', () => {
-    const onPriceCalculated = jest.fn();
-    const onTipCalculated = jest.fn();
     render(
       <TurnipCalculator
-        onPriceCalculated={onPriceCalculated}
-        onTipCalculated={onTipCalculated}
+        onPriceCalculated={jest.fn()}
+        onTipCalculated={jest.fn()}
       />,
     );
   });
   test('should contain a price field', () => {
-    const onPriceCalculated = jest.fn();
-    const onTipCalculated = jest.fn();
     const { getByRole } = render(
       <TurnipCalculator
-        onPriceCalculated={onPriceCalculated}
-        onTipCalculated={onTipCalculated}
+        onPriceCalculated={jest.fn()}
+        onTipCalculated={jest.fn()}
       />,
     );
 
@@ -28,12 +24,10 @@ describe('TurnipCalculator component', () => {
     });
   });
   test('should contain a turnip quantity field', () => {
-    const onPriceCalculated = jest.fn();
-    const onTipCalculated = jest.fn();
     const { getByRole } = render(
       <TurnipCalculator
-        onPriceCalculated={onPriceCalculated}
-        onTipCalculated={onTipCalculated}
+        onPriceCalculated={jest.fn()}
+        onTipCalculated={jest.fn()}
       />,
     );
 
@@ -42,12 +36,10 @@ describe('TurnipCalculator component', () => {
     });
   });
   test('should contain a tip percentage field', () => {
-    const onPriceCalculated = jest.fn();
-    const onTipCalculated = jest.fn();
     const { getByRole } = render(
       <TurnipCalculator
-        onPriceCalculated={onPriceCalculated}
-        onTipCalculated={onTipCalculated}
+        onPriceCalculated={jest.fn()}
+        onTipCalculated={jest.fn()}
       />,
     );
 
@@ -57,14 +49,13 @@ describe('TurnipCalculator component', () => {
   });
   test('should fire onPriceCalculated handler with calculated price', () => {
     const onPriceCalculated = jest.fn();
-    const onTipCalculated = jest.fn();
 
     const expectedBuyPrice = 800;
 
     const { getByRole } = render(
       <TurnipCalculator
         onPriceCalculated={onPriceCalculated}
-        onTipCalculated={onTipCalculated}
+        onTipCalculated={jest.fn()}
       />,
     );
 
@@ -94,7 +85,6 @@ describe('TurnipCalculator component', () => {
   });
   test('should fire onPriceCalculated handler with turnip price and quantity', () => {
     const onPriceCalculated = jest.fn();
-    const onTipCalculated = jest.fn();
 
     const expectedPrice = 400;
     const expectedTurnips = 2;
@@ -102,7 +92,7 @@ describe('TurnipCalculator component', () => {
     const { getByRole } = render(
       <TurnipCalculator
         onPriceCalculated={onPriceCalculated}
-        onTipCalculated={onTipCalculated}
+        onTipCalculated={jest.fn()}
       />,
     );
 
@@ -130,14 +120,13 @@ describe('TurnipCalculator component', () => {
     );
   });
   test('should fire onTipCalculated handler with calculated tip', () => {
-    const onPriceCalculated = jest.fn();
     const onTipCalculated = jest.fn();
 
     const expectedTip = 200;
 
     const { getByRole } = render(
       <TurnipCalculator
-        onPriceCalculated={onPriceCalculated}
+        onPriceCalculated={jest.fn()}
         onTipCalculated={onTipCalculated}
       />,
     );
@@ -170,12 +159,11 @@ describe('TurnipCalculator component', () => {
     expect(onTipCalculated).toHaveBeenLastCalledWith(expectedTip);
   });
   test('should round tips to nearest hundredth', () => {
-    const onPriceCalculated = jest.fn();
     const onTipCalculated = jest.fn();
 
     const { getByRole } = render(
       <TurnipCalculator
-        onPriceCalculated={onPriceCalculated}
+        onPriceCalculated={jest.fn()}
         onTipCalculated={onTipCalculated}
       />,
     );
