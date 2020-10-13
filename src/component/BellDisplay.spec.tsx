@@ -11,6 +11,9 @@ const baseProps: BellDisplayProps = {
   imgSrc: 'image.jpg',
   amount: 1,
   bellUnits: 1,
+  shownTooltipName: '',
+  setShownTooltipName: jest.fn(),
+  tooltipName: '',
 };
 
 describe('BellDisplay component', () => {
@@ -57,6 +60,7 @@ describe('BellDisplay component', () => {
         {...baseProps}
         amount={expectedAmount}
         bellUnits={expectedUnits}
+        setShownTooltipName={jest.fn()}
       />,
     );
 
@@ -83,6 +87,7 @@ describe('BellDisplay component', () => {
         {...baseProps}
         amount={expectedAmount}
         bellUnits={expectedUnits}
+        setShownTooltipName={jest.fn()}
       />,
     );
 

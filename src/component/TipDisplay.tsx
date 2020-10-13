@@ -18,6 +18,7 @@ export default function TipDisplay(props: TipDisplayProps) {
   const [smallBags, setSmallBags] = useState(0);
   const [mediumBags, setMediumBags] = useState(0);
   const [largeBags, setLargeBags] = useState(0);
+  const [shownTooltipName, setShownTooltipName] = useState('');
 
   useEffect(() => {
     let workingTip = tip;
@@ -51,31 +52,43 @@ export default function TipDisplay(props: TipDisplayProps) {
         If you want to provide a tip, then tip: <b>{tip}</b> bells
       </label>
       <br />
-      <span>Thats...</span>
+      <span>That's...</span>
       <br />
       <BellDisplay
         amount={largeBags}
         imgSrc={largeBellImg}
         alt={'Large Bell Bag Icon'}
         bellUnits={99000}
+        tooltipName="largeBags"
+        shownTooltipName={shownTooltipName}
+        setShownTooltipName={setShownTooltipName}
       />
       <BellDisplay
         amount={mediumBags}
         imgSrc={mediumBellImg}
         alt={'Medium Bell Bag Icon'}
         bellUnits={10000}
+        tooltipName="mediumBags"
+        shownTooltipName={shownTooltipName}
+        setShownTooltipName={setShownTooltipName}
       />
       <BellDisplay
         amount={smallBags}
         imgSrc={smallBellImg}
         alt={'Small Bell Bag Icon'}
         bellUnits={1000}
+        tooltipName="smallBags"
+        shownTooltipName={shownTooltipName}
+        setShownTooltipName={setShownTooltipName}
       />
       <BellDisplay
         amount={coins}
         imgSrc={coinImg}
         alt={'Coin Icon'}
         bellUnits={100}
+        tooltipName="coins"
+        shownTooltipName={shownTooltipName}
+        setShownTooltipName={setShownTooltipName}
       />
       <br />
       <span>
