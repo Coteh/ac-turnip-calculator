@@ -3,16 +3,34 @@ import React from 'react';
 import { css } from 'emotion';
 import MobileCheck from '../util/MobileCheck';
 
-export default function BellDisplay(props: any) {
-  const { amount, imgSrc, alt, bellUnits, tooltipName, shownTooltipName, setShownTooltipName } = props;
+export interface BellDisplayProps {
+  amount: number;
+  imgSrc: string;
+  alt: string;
+  bellUnits: number;
+  tooltipName: string;
+  shownTooltipName: string;
+  setShownTooltipName: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export default function BellDisplay(props: BellDisplayProps) {
+  const {
+    amount,
+    imgSrc,
+    alt,
+    bellUnits,
+    tooltipName,
+    shownTooltipName,
+    setShownTooltipName,
+  } = props;
   const showTooltip = tooltipName === shownTooltipName;
 
   function setShowTooltip(show: boolean) {
-    setShownTooltipName(show ? tooltipName : "");
+    setShownTooltipName(show ? tooltipName : '');
   }
 
   if (amount === 0) {
-    return <></>;
+    return null;
   }
 
   return (
