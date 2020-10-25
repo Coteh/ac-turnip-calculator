@@ -3,6 +3,15 @@ import FormInputField from './form/FormInputField';
 import ErrorAlert from './alert/ErrorAlert';
 import { css } from 'emotion';
 
+export interface TurnipCalculatorProps {
+  onPriceCalculated: (
+    buyPrice: number,
+    turnipPrice: number,
+    numTurnips: number,
+  ) => void;
+  onTipCalculated: (tip: number) => void;
+}
+
 export default function TurnipCalculator(props: any) {
   const firstUpdate = useRef(true);
   const [price, setPrice] = useState(0);
@@ -65,7 +74,7 @@ export default function TurnipCalculator(props: any) {
     setAlertTurnip(value === '0');
   }
 
-  function parseNumericInputValue(value: string): number {
+  function parseNumericInputValue(value: string) {
     if (value === '') {
       return 0;
     }
