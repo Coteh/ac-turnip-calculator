@@ -7,7 +7,7 @@ describe('ErrorAlert component', () => {
     render(<ErrorAlert />);
   });
 
-  test('should render the message we pass', () => {
+  test('should render error message', () => {
     const message = 'Test error message';
 
     const { container } = render(<ErrorAlert message={message} />);
