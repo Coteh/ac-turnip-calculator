@@ -192,7 +192,7 @@ describe('TurnipCalculator component', () => {
     expect(errorAlert).toBeNull();
   });
 
-  test('should show the error alert if user types zero on the price field', () => {
+  test('should show an error alert if user enters zero on the price field', () => {
     const { getByRole, queryByTestId } = render(<TurnipCalculator />);
 
     const priceField = getByRole('textbox', {
