@@ -181,7 +181,7 @@ describe('TurnipCalculator component', () => {
     expect(handler).toHaveBeenLastCalledWith(1100);
   });
 
-  test("should not show the error alert if user doesn't do anything", () => {
+  test("should not show an error alert if user doesn't do anything", () => {
     const handler = jest.fn();
 
     const { queryByTestId } = render(
