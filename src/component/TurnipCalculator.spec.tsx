@@ -276,7 +276,7 @@ describe('TurnipCalculator component', () => {
     expect(errorAlert).toBeNull();
   });
 
-  test('should show the error alert if user clicks on price field and the clicks out', () => {
+  test('should show an error alert if user clicks on price field and then clicks out', () => {
     const { getByRole, queryByTestId } = render(<TurnipCalculator />);
 
     const priceField = getByRole('textbox', {
