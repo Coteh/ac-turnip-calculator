@@ -10,9 +10,8 @@ describe('ErrorAlert component', () => {
   test('should render error message', () => {
     const message = 'Test error message';
 
-    const { container } = render(<ErrorAlert message={message} />);
+    const { getByText } = render(<ErrorAlert message={message} />);
 
-    const messageElement = container.querySelector('div');
-    expect(messageElement).toHaveTextContent(message);
+    getByText(message);
   });
 });
