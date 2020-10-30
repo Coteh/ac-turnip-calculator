@@ -294,4 +294,31 @@ describe('TurnipCalculator component', () => {
     const errorAlert = queryByTestId('ErrorAlert');
     expect(errorAlert).toBeTruthy();
   });
+
+  test('should show two error alerts if user enters zero on the turnips field and zero on the price field', () => {
+    const { getByRole, queryAllByTestId } = render(<TurnipCalculator />);
+
+    const turnipsField = getByRole('textbox', {
+      name: 'turnips',
+    });
+
+    fireEvent.change(turnipsField, {
+      target: {
+        value: 0,
+      },
+    });
+
+    const priceField = getByRole('textbox', {
+      name: 'price',
+    });
+
+    fireEvent.change(priceField, {
+      target: {
+        value: 0,
+      },
+    });
+
+    const errorAlert = queryAllByTestId('ErrorAlert');
+    expect(errorAlert).toHaveLength(2);
+  });
 });
