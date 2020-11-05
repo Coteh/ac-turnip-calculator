@@ -6,8 +6,8 @@
   "dependencies": {
     "coteh-react-scripts": "3.4.2",
     "emotion": "^10.0.27",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
