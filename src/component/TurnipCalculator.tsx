@@ -88,13 +88,13 @@ export default function TurnipCalculator(props: TurnipCalculatorProps) {
   return (
     <div className={'turnip-calc'}>
       {alertPrice ? (
-        <ErrorAlert message="You can't put 0 as a price"></ErrorAlert>
+        <ErrorAlert message="Please enter a price greater than 0"></ErrorAlert>
       ) : (
         ''
       )}
 
       {alertTurnip ? (
-        <ErrorAlert message="You can't put 0 as turnips number"></ErrorAlert>
+        <ErrorAlert message="Please enter a turnip quantity greater than 0"></ErrorAlert>
       ) : (
         ''
       )}

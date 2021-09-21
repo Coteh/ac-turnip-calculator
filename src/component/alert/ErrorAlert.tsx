@@ -5,7 +5,7 @@ export default function ErrorAlert(props: any) {
   const { message } = props;
   const style = {
     color: 'red',
-    width: '250px',
+    width: '300px',
     backgroundColor: '#ffc7c7',
     margin: '10px auto',
     padding: '10px 15px',

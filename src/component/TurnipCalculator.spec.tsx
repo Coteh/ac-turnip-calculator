@@ -217,7 +217,10 @@ describe('TurnipCalculator component', () => {
     const handler = jest.fn();
 
     const { queryByTestId } = render(
-      <TurnipCalculator onTipCalculated={handler} />,
+      <TurnipCalculator
+        onPriceCalculated={jest.fn()}
+        onTipCalculated={handler}
+      />,
     );
 
     const errorAlert = queryByTestId('ErrorAlert');
@@ -225,7 +228,12 @@ describe('TurnipCalculator component', () => {
   });
 
   test('should show an error alert if user enters zero on the price field', () => {
-    const { getByRole, queryByTestId } = render(<TurnipCalculator />);
+    const { getByRole, queryByTestId } = render(
+      <TurnipCalculator
+        onPriceCalculated={jest.fn()}
+        onTipCalculated={jest.fn()}
+      />,
+    );
 
     const priceField = getByRole('textbox', {
       name: 'price',
@@ -248,7 +256,12 @@ describe('TurnipCalculator component', () => {
   });
 
   test('should show an error alert if user enters zero on the turnips field', () => {
-    const { getByRole, queryAllByTestId } = render(<TurnipCalculator />);
+    const { getByRole, queryAllByTestId } = render(
+      <TurnipCalculator
+        onPriceCalculated={jest.fn()}
+        onTipCalculated={jest.fn()}
+      />,
+    );
 
     const turnipsField = getByRole('textbox', {
       name: 'turnips',
@@ -265,7 +278,12 @@ describe('TurnipCalculator component', () => {
   });
 
   test('should not show an error alert if user enters a non-zero value on the price field', () => {
-    const { getByRole, queryByTestId } = render(<TurnipCalculator />);
+    const { getByRole, queryByTestId } = render(
+      <TurnipCalculator
+        onPriceCalculated={jest.fn()}
+        onTipCalculated={jest.fn()}
+      />,
+    );
 
     const priceField = getByRole('textbox', {
       name: 'price',
@@ -282,14 +300,18 @@ describe('TurnipCalculator component', () => {
   });
 
   test('should not show an error alert if user enters a non-zero value on the turnips field', () => {
-    const { getByRole, queryByTestId } = render(<TurnipCalculator />);
+    const { getByRole, queryByTestId } = render(
+      <TurnipCalculator
+        onPriceCalculated={jest.fn()}
+        onTipCalculated={jest.fn()}
+      />,
+    );
+
+    // Currently, price field must also be non-zero since it has a default of 0 that can't be changed
+    // Thus, precondition will be change price field and verify error message doesn't appear, before checking turnip field
 
     const priceField = getByRole('textbox', {
       name: 'price',
-    });
-
-    const turnipsField = getByRole('textbox', {
-      name: 'turnips',
     });
 
     fireEvent.change(priceField, {
@@ -298,18 +320,28 @@ describe('TurnipCalculator component', () => {
       },
     });
 
+    expect(queryByTestId('ErrorAlert')).toBeNull();
+
+    const turnipsField = getByRole('textbox', {
+      name: 'turnips',
+    });
+
     fireEvent.change(turnipsField, {
       target: {
         value: 50,
       },
     });
 
-    const errorAlert = queryByTestId('ErrorAlert');
-    expect(errorAlert).toBeNull();
+    expect(queryByTestId('ErrorAlert')).toBeNull();
   });
 
   test('should show an error alert if user clicks on price field and then clicks out', () => {
-    const { getByRole, queryByTestId } = render(<TurnipCalculator />);
+    const { getByRole, queryByTestId } = render(
+      <TurnipCalculator
+        onPriceCalculated={jest.fn()}
+        onTipCalculated={jest.fn()}
+      />,
+    );
 
     const priceField = getByRole('textbox', {
       name: 'price',
@@ -328,7 +360,12 @@ describe('TurnipCalculator component', () => {
   });
 
   test('should show two error alerts if user enters zero on the turnips field and zero on the price field', () => {
-    const { getByRole, queryAllByTestId } = render(<TurnipCalculator />);
+    const { getByRole, queryAllByTestId } = render(
+      <TurnipCalculator
+        onPriceCalculated={jest.fn()}
+        onTipCalculated={jest.fn()}
+      />,
+    );
 
     const turnipsField = getByRole('textbox', {
       name: 'turnips',
