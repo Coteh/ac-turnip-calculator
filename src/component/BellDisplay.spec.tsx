@@ -1,33 +1,48 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import BellDisplay from './BellDisplay';
+import BellDisplay, { BellDisplayProps } from './BellDisplay';
 
 import MobileCheck from '../util/MobileCheck';
 
 jest.mock('../util/MobileCheck');
 
+const baseProps: BellDisplayProps = {
+  alt: 'alt',
+  imgSrc: 'image.jpg',
+  amount: 1,
+  bellUnits: 1,
+  shownTooltipName: '',
+  setShownTooltipName: jest.fn(),
+  tooltipName: '',
+};
+
 describe('BellDisplay component', () => {
   test('should render without crash', () => {
-    render(<BellDisplay />);
+    render(<BellDisplay {...baseProps} />);
   });
   test('should display amount passed in as prop', () => {
-    const expectedAmount: number = 12;
-    const { getByText } = render(<BellDisplay amount={expectedAmount} />);
+    const expectedAmount = 12;
+    const { getByText } = render(
+      <BellDisplay {...baseProps} amount={expectedAmount} />,
+    );
 
     const elem = getByText(expectedAmount.toString());
     expect(elem).toBeTruthy();
   });
   test('should display icon passed in via image src as prop', () => {
-    const expectedSrc: string = 'fake_image.jpg';
-    const { getByRole } = render(<BellDisplay imgSrc={expectedSrc} />);
+    const expectedSrc = 'fake_image.jpg';
+    const { getByRole } = render(
+      <BellDisplay {...baseProps} imgSrc={expectedSrc} />,
+    );
 
     const elem = getByRole('img');
     expect(elem.getAttribute('src')).toBe(expectedSrc);
   });
   test('should display img alt text passed in as prop', () => {
-    const expectedAlt: string = 'An image.';
-    const { getByRole } = render(<BellDisplay alt={expectedAlt} />);
-
+    const expectedAlt = 'An image.';
+    const { getByRole } = render(
+      <BellDisplay {...baseProps} alt={expectedAlt} />,
+    );
     const elem = getByRole('img');
     expect(elem.getAttribute('alt')).toBe(expectedAlt);
   });
@@ -37,11 +52,12 @@ describe('BellDisplay component', () => {
 
     MobileCheck.isMobile = mockNonMobile;
 
-    const expectedAmount: number = 12;
-    const expectedUnits: number = 1000;
+    const expectedAmount = 12;
+    const expectedUnits = 1000;
 
     const { getByText } = render(
       <BellDisplay
+        {...baseProps}
         amount={expectedAmount}
         bellUnits={expectedUnits}
         setShownTooltipName={jest.fn()}
@@ -63,11 +79,12 @@ describe('BellDisplay component', () => {
 
     MobileCheck.isMobile = mockMobile;
 
-    const expectedAmount: number = 12;
-    const expectedUnits: number = 1000;
+    const expectedAmount = 12;
+    const expectedUnits = 1000;
 
     const { getByText } = render(
       <BellDisplay
+        {...baseProps}
         amount={expectedAmount}
         bellUnits={expectedUnits}
         setShownTooltipName={jest.fn()}

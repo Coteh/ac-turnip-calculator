@@ -8,7 +8,7 @@ jest.mock('../util/MobileCheck');
 
 describe('TipDisplay component', () => {
   test('should render without crash', () => {
-    render(<TipDisplay />);
+    render(<TipDisplay tip={10} />);
   });
   test('should display number of large bell bags to tip', () => {
     const { getByAltText } = render(<TipDisplay tip={99000 * 2} />);
@@ -46,7 +46,7 @@ describe('TipDisplay component', () => {
 
     MobileCheck.isMobile = mockNonMobile;
 
-    const { getByText } = render(<TipDisplay />);
+    const { getByText } = render(<TipDisplay tip={10} />);
 
     // Check for keywords instead of whole message
     const hoverMessage = getByText(/hover/i);
@@ -59,7 +59,7 @@ describe('TipDisplay component', () => {
 
     MobileCheck.isMobile = mockMobile;
 
-    const { getByText } = render(<TipDisplay />);
+    const { getByText } = render(<TipDisplay tip={10} />);
 
     // Check for keywords instead of whole message
     const hoverMessage = getByText(/tap/i);

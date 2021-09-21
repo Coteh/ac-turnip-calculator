@@ -12,7 +12,7 @@ export interface TurnipCalculatorProps {
   onTipCalculated: (tip: number) => void;
 }
 
-export default function TurnipCalculator(props: any) {
+export default function TurnipCalculator(props: TurnipCalculatorProps) {
   const firstUpdate = useRef(true);
   const [price, setPrice] = useState(0);
   const [turnips, setTurnips] = useState(4000);
@@ -23,7 +23,7 @@ export default function TurnipCalculator(props: any) {
   const [alertPrice, setAlertPrice] = useState(false);
   const [alertTurnip, setAlertTurnip] = useState(false);
 
-  const ROUND_TO_NEAREST: number = 100;
+  const ROUND_TO_NEAREST = 100;
 
   const { onPriceCalculated, onTipCalculated } = props;
   const inputStyle = css`
@@ -78,7 +78,7 @@ export default function TurnipCalculator(props: any) {
     if (value === '') {
       return 0;
     }
-    const parsedValue: number = parseInt(value);
+    const parsedValue = parseInt(value);
     if (!isNaN(parsedValue)) {
       return parsedValue;
     }
