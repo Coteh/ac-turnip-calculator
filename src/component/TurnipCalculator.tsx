@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import FormInputField from './form/FormInputField';
+import ErrorAlert from './alert/ErrorAlert';
 import { css } from 'emotion';
 
 export interface TurnipCalculatorProps {
@@ -12,11 +13,15 @@ export interface TurnipCalculatorProps {
 }
 
 export default function TurnipCalculator(props: TurnipCalculatorProps) {
+  const firstUpdate = useRef(true);
   const [price, setPrice] = useState(0);
   const [turnips, setTurnips] = useState(4000);
   const [buyPrice, setBuyPrice] = useState(0);
   const [tipPercent, setTipPercent] = useState(10);
   const [tip, setTip] = useState(0);
+
+  const [alertPrice, setAlertPrice] = useState(false);
+  const [alertTurnip, setAlertTurnip] = useState(false);
 
   const ROUND_TO_NEAREST = 100;
 
@@ -33,8 +38,18 @@ export default function TurnipCalculator(props: TurnipCalculatorProps) {
   `;
 
   useEffect(() => {
-    setBuyPrice(price * turnips);
-  }, [price, turnips]);
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      setBuyPrice(price * turnips);
+    } else {
+      setAlertPrice(price === 0);
+      setAlertTurnip(turnips === 0);
+
+      if (!alertPrice && !alertTurnip) {
+        setBuyPrice(price * turnips);
+      }
+    }
+  }, [price, turnips, alertPrice, alertTurnip]);
 
   useEffect(() => {
     setTip(
@@ -51,6 +66,14 @@ export default function TurnipCalculator(props: TurnipCalculatorProps) {
     onTipCalculated?.(tip);
   }, [tip, onTipCalculated]);
 
+  function checkPriceZeroValue(value: string) {
+    setAlertPrice(value === '0');
+  }
+
+  function checkTurnipZeroValue(value: string) {
+    setAlertTurnip(value === '0');
+  }
+
   function parseNumericInputValue(value: string) {
     if (value === '') {
       return 0;
@@ -64,6 +87,17 @@ export default function TurnipCalculator(props: TurnipCalculatorProps) {
 
   return (
     <div className={'turnip-calc'}>
+      {alertPrice ? (
+        <ErrorAlert message="You can't put 0 as a price"></ErrorAlert>
+      ) : (
+        ''
+      )}
+
+      {alertTurnip ? (
+        <ErrorAlert message="You can't put 0 as turnips number"></ErrorAlert>
+      ) : (
+        ''
+      )}
       <form action="">
         <FormInputField
           label={'Input Price:'}
@@ -73,6 +107,7 @@ export default function TurnipCalculator(props: TurnipCalculatorProps) {
               className={inputStyle}
               value={price}
               onChange={(e) => setPrice(parseNumericInputValue(e.target.value))}
+              onBlur={(event) => checkPriceZeroValue(event.target.value)}
             />
           }
         />
@@ -86,6 +121,7 @@ export default function TurnipCalculator(props: TurnipCalculatorProps) {
               onChange={(e) =>
                 setTurnips(parseNumericInputValue(e.target.value))
               }
+              onBlur={(event) => checkTurnipZeroValue(event.target.value)}
             />
           }
         />
